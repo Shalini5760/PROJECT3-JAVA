@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class ExpenseTracker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] dates = new String[100];
+        String[] categories = new String[100];
+        double[] amounts = new double[100];
+        int count = 0;
+
+        while (true) {
+            System.out.println("\nExpense Tracker");
+            System.out.println("1. Add Expense");
+            System.out.println("2. View Expenses");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            if (choice == 1) {
+                System.out.print("Enter date (YYYY-MM-DD): ");
+                dates[count] = scanner.nextLine();
+                System.out.print("Enter category: ");
+                categories[count] = scanner.nextLine();
+                System.out.print("Enter amount: ");
+                amounts[count] = scanner.nextDouble();
+                count++;
+                System.out.println("Expense added!");
+            } else if (choice == 2) {
+                System.out.println("\nExpenses:");
+                for (int i = 0; i < count; i++) {
+                    System.out.println(dates[i] + " | " + categories[i] + " | $" + amounts[i]);
+                }
+            } else if (choice == 3) {
+                System.out.println("Exiting program...");
+                break;
+            } else {
+                System.out.println("Invalid choice! Try again.");
+            }
+        }
+        scanner.close();
+    }
+}
